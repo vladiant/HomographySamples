@@ -1,0 +1,7 @@
+1 //enable
+10 //raw bit depth
+0  //raw first pixel color (0:R,1:GR,2:GB,3:B)
+0  //data pedestal in the RAW images\
+3264 //size X
+2448 //size Y
+3264 //pixels per line (line size in pixels)
