@@ -1,0 +1,21 @@
+274  //not used
+256  //Gr gain
+301  //R gain
+290  //B gain
+256  //not used Gb gain 
+0    //pre_offsets - R, set to 0 for OMAP4
+0    //pre_offsets - G, set to 0 for OMAP4
+0    //pre_offsets - B, set to 0 for OMAP4
+387  //RGB2RGB
+-81
+-50
+-71
+394
+-67
+-24
+-102
+382
+5000 //CT
+0
+0
+0
