@@ -43,4 +43,3 @@ class cTMostFeatureDetector {
 };
 
 #include "cTMostFeatureDetectorImpl.h"
-

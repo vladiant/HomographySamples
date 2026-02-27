@@ -20,4 +20,3 @@ uint32_t ssd_fst(const uint8_t *ptr1, const uint8_t *ptr2, int32_t size_x,
 #ifdef __cplusplus
 }
 #endif
-

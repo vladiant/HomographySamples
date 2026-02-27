@@ -43,4 +43,3 @@ void sad_brute(uint8_t* kernel, int kernelWidth, int kernelHeight, uint8_t* img,
 void sad_brute(uint8_t* kernel, int kernelWidth, int kernelHeight, int sx,
                int sy, int swid, int shei, uint8_t* img, int width, int height,
                char* out, int* minx, int* miny);
-

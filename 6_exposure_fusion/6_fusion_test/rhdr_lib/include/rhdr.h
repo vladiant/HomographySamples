@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #define RHDR_OUT_BITS_PER_PIX (12)
 #define RHDR_MAX_IMGS (5)
 

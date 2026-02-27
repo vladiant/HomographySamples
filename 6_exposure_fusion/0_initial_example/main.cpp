@@ -10,7 +10,7 @@ using namespace std;
 
 void loadExposureSeq(String, vector<Mat>&, vector<float>&);
 
-// ./initial_example -input ./ 
+// ./initial_example -input ./
 int main(int argc, char** argv) {
   CommandLineParser parser(
       argc, argv,

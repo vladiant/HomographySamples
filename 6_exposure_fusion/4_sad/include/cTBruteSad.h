@@ -18,4 +18,3 @@ void bruteForceSad(uint8_t* src, uint8_t* dst, int width, int height,
                    cTFeatureSegmentContainer<float>* features,
                    cTFeatureSegmentContainer<float>* motion, int kernelWidth,
                    int kernelHeight, int searchWidth, int searchHeight);
-

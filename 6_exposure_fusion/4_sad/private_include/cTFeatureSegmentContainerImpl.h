@@ -244,4 +244,3 @@ template <typename coordT>
 uint32_t cTFeatureSegmentContainer<coordT>::imageGetHeight() const {
   return imgHeight;
 }
-

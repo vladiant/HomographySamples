@@ -71,4 +71,3 @@ class cTFeatureSegmentContainer {
 };
 
 #include "cTFeatureSegmentContainerImpl.h"
-

@@ -225,9 +225,9 @@ void cTMostFeatureDetector<coordT, bpp>::detect(const unsigned char* p2,
 
   //	cout<<container->segmentGetCols()<<" "<<container->segmentGetRows()<<"
   //"<<
-  //container->segmentGetCols()*container->segmentGetWidth()<<"
+  // container->segmentGetCols()*container->segmentGetWidth()<<"
   //"<<
-  //container->segmentGetRows()*container->segmentGetHeight()<<"
+  // container->segmentGetRows()*container->segmentGetHeight()<<"
   //"<< 			seg_rows2*container->segmentGetHeight()<<" "<<
   //			seg_cols2*container->segmentGetWidth()<<endl;
 
@@ -348,4 +348,3 @@ cTFeatureSegmentContainer<coordT>*
 cTMostFeatureDetector<coordT, bpp>::getContainer() {
   return container;
 }
-
