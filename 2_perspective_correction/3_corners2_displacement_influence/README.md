@@ -17,7 +17,7 @@ The pipeline:
 ## Build
 
 ```bash
-cd /home/vladiant/Workplace/HomographySamples/2_perspective_correction/3_corners2_displacement_influence
+cd 2_perspective_correction/3_corners2_displacement_influence
 cmake -S . -B build
 cmake --build build
 ```

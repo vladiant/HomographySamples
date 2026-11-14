@@ -11,7 +11,7 @@ It:
 ## Build
 
 ```bash
-cd /home/vladiant/Workplace/HomographySamples/1_pose_estimation/5_circles_pattern_corners_noise_test
+cd 1_pose_estimation/5_circles_pattern_corners_noise_test
 cmake -S . -B build
 cmake --build build
 ```

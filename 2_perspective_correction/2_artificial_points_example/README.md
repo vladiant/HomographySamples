@@ -19,7 +19,7 @@ Then the code:
 ## Build
 
 ```bash
-cd /home/vladiant/Workplace/HomographySamples/2_perspective_correction/2_artificial_points_example
+cd 2_perspective_correction/2_artificial_points_example
 cmake -S . -B build
 cmake --build build
 ```
