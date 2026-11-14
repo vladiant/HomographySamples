@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -90,6 +91,20 @@ int main(int argc, char** argv) {
   return 0;
 }
 
+// Robust white point: the value below which the given percentile of samples
+// fall, so a few very bright pixels do not dominate the normalization.
+static double percentileValue(const Mat& img, double percentile) {
+  Mat values;
+  img.reshape(1).convertTo(values, CV_32F);
+  vector<float> data(values.begin<float>(), values.end<float>());
+  if (data.empty()) {
+    return 0.0;
+  }
+  size_t index = static_cast<size_t>((percentile / 100.0) * (data.size() - 1));
+  nth_element(data.begin(), data.begin() + index, data.end());
+  return data[index];
+}
+
 void createExposures(const Mat& img, vector<Mat>& images,
                      vector<float>& times) {
   double minVal{};
@@ -98,24 +113,35 @@ void createExposures(const Mat& img, vector<Mat>& images,
   minMaxLoc(img.reshape(1), &minVal, &maxVal);
   cout << "Min value: " << minVal << ", Max value: " << maxVal << "\n";
 
-  // Normalize the high dynamic range image to a 32-bit float in [0, 1].
-  double range = maxVal - minVal;
+  // Use a high percentile as the white point so bright highlights do not
+  // collapse the rest of the scene to black.
+  double whitePoint = percentileValue(img, 99.0);
+  if (whitePoint <= minVal) {
+    whitePoint = maxVal;
+  }
+  double range = whitePoint - minVal;
   if (range <= 0.0) {
     range = 1.0;
   }
+  cout << "White point (99th pct): " << whitePoint << "\n";
   Mat normalized;
   img.convertTo(normalized, CV_32F, 1.0 / range, -minVal / range);
 
-  // Brighten the normalized image with increasing exposure times, clipping the
-  // highlights so that each exposure reveals a different tonal range.
+  // Brighten with increasing exposure times, clipping highlights so each
+  // exposure reveals a different tonal range.
   const vector<float> exposureTimes{0.25f, 0.5f, 1.0f, 2.0f, 4.0f};
+  const double invGamma = 1.0 / 2.2;  // gamma-encode linear data for display
   for (float exposureTime : exposureTimes) {
     Mat scaled;
     normalized.convertTo(scaled, CV_32F, exposureTime);
     threshold(scaled, scaled, 1.0, 1.0, THRESH_TRUNC);
+    scaled = cv::max(scaled, 0.0);
+
+    Mat encoded;
+    pow(scaled, invGamma, encoded);
 
     Mat exposure;
-    scaled.convertTo(exposure, CV_8U, 255.0);
+    encoded.convertTo(exposure, CV_8U, 255.0);
     images.push_back(exposure);
     times.push_back(exposureTime);
 
